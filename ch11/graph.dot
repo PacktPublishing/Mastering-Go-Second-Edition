@@ -1,0 +1,24 @@
+digraph G
+{
+	graph [dpi = 300, bgcolor = "gray"];
+	rankdir = LR;
+	node [shape=record, width=.2, height=.2, color="white" ];
+	
+	node0 [label = "<p0> | <p1> | <p2> | <p3> | <p4> | | ", height = 3];
+	node[ width=2 ];
+	node1 [label = "{<e> r0 | 123 | <p> }", color="gray" ];
+	node2 [label = "{<e> r10 | 13 | <p> }" ];
+	node3 [label = "{<e> r11 | 23 | <p> }" ];
+	node4 [label = "{<e> r12 | 326 | <p> }" ];
+	node5 [label = "{<e> r13 | 1f3 | <p> }" ];
+	node6 [label = "{<e> r20 | 143 | <p> }" ];
+	node7 [label = "{<e> r40 | b23 | <p> }" ];
+	
+	node0:p0 -> node1:e [dir=both color="red:blue"];
+	node0:p1 -> node2:e [dir=back arrowhead=diamond];
+	node2:p -> node3:e;
+	node3:p -> node4:e [dir=both arrowtail=box color="red"];
+	node4:p -> node5:e [dir=forward];
+	node0:p2 -> node6:e [dir=none color="orange"];
+	node0:p4 -> node7:e;
+}

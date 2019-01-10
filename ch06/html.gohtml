@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+		<title>Doing Maths in Go!</title>
+		<style>
+			html {
+				font-size: 14px;
+			}
+			table, th, td {
+			    border: 2px solid blue;
+			}
+		</style>
+	</head>
+	<body>
+
+
+<table>
+	<thead>
+		<tr>
+			<th>Number</th>
+			<th>Double</th>
+			<th>Square</th>
+		</tr>
+	</thead>
+	<tbody>
+{{ range . }}
+	<tr>
+		<td> {{ .Number }} </td>
+		<td> {{ .Double }} </td>
+		<td> {{ .Square }} </td>
+	</tr>
+{{ end }}
+	</tbody>
+</table>
+
+</body>
+</html>

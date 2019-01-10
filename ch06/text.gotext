@@ -1,0 +1,4 @@
+Calculating the squares of some integers
+
+{{ range . }} The square of {{ printf "%d" .Number}} is {{ printf "%d" .Square}}
+{{ end }}
