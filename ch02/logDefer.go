@@ -35,8 +35,9 @@ func main() {
 	}
 	defer f.Close()
 
-	// LstdFlags = Ldate | Ltime // initial values for the standard logger
-	iLog := log.New(f, "customLog ", log.LstdFlags)
+	// LstdFlags = Ldate | Ltime
+	// Initial values for the standard logger
+	iLog := log.New(f, "logDefer ", log.LstdFlags)
 	iLog.Println("Hello there!")
 	iLog.Println("Another log entry!")
 
