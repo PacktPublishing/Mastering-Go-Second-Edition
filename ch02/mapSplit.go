@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	var N = 2000000
+	var N = 40000000
 	split := make([]map[int]int, 200)
 	for i := range split {
 		split[i] = make(map[int]int)
