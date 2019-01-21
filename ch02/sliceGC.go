@@ -1,32 +1,21 @@
 package main
 
 import (
-	"fmt"
 	"runtime"
 )
 
-func printStats(mem runtime.MemStats) {
-	runtime.ReadMemStats(&mem)
-	fmt.Println("mem.Alloc:", mem.Alloc)
-	fmt.Println("mem.TotalAlloc:", mem.TotalAlloc)
-	fmt.Println("mem.HeapAlloc:", mem.HeapAlloc)
-	fmt.Println("mem.NumGC:", mem.NumGC)
-	fmt.Println("-----")
+type data struct {
+	i, j int32
 }
 
 func main() {
-	var mem runtime.MemStats
-	printStats(mem)
-
-	s := make([]*int, 10000000)
-	if s == nil {
-		fmt.Println("Operation failed!")
+	var N = 2000000
+	var structure []data
+	for i := 0; i < N; i++ {
+		value := int32(i)
+		structure = append(structure, data{value, value})
 	}
-	printStats(mem)
 
-	t := make([]*int, 10000000)
-	if t == nil {
-		fmt.Println("Operation failed!")
-	}
-	printStats(mem)
+	runtime.GC()
+	_ = structure[0]
 }
