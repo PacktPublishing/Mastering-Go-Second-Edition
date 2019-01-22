@@ -5,14 +5,14 @@ import (
 )
 
 type data struct {
-	i, j int32
+	i, j int
 }
 
 func main() {
 	var N = 40000000
 	var structure []data
 	for i := 0; i < N; i++ {
-		value := int32(i)
+		value := int(i)
 		structure = append(structure, data{value, value})
 	}
 
