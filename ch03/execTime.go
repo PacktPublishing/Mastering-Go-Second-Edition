@@ -30,5 +30,4 @@ func main() {
 	}
 	duration = time.Since(start)
 	fmt.Println("It took the for loop", duration, "to finish.")
-
 }
