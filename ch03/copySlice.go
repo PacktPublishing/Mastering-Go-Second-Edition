@@ -5,7 +5,6 @@ import (
 )
 
 func main() {
-
 	a6 := []int{-10, 1, 2, 3, 4, 5}
 	a4 := []int{-1, -2, -3, -4}
 	fmt.Println("a6:", a6)
