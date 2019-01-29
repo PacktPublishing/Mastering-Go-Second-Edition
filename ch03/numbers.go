@@ -32,7 +32,7 @@ func main() {
 	y := 4 / 2.3
 	fmt.Println("y:", y)
 
-	divFloat := float64(x / k)
+	divFloat := float64(x) / float64(k)
 	fmt.Println("divFloat", divFloat)
 	fmt.Printf("Type of divFloat: %T\n", divFloat)
 }
