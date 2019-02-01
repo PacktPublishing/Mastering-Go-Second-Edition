@@ -1,0 +1,9 @@
+{
+    "Name":"Mihalis",
+    "Surname":"Tsoukalos",
+    "Tel":[
+        {"Mobile":true,"Number":"1234-567"},
+        {"Mobile":true,"Number":"1234-abcd"},
+        {"Mobile":false,"Number":"abcc-567"}
+    ]
+}
