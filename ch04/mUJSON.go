@@ -3,7 +3,6 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"os"
 )
 
 type Record struct {
@@ -29,7 +28,7 @@ func main() {
 	rec, err := json.Marshal(&myRecord)
 	if err != nil {
 		fmt.Println(err)
-		os.Exit(100)
+		return
 	}
 	fmt.Println(string(rec))
 
@@ -37,7 +36,7 @@ func main() {
 	err1 := json.Unmarshal(rec, &unRec)
 	if err1 != nil {
 		fmt.Println(err1)
-		os.Exit(100)
+		return
 	}
 	fmt.Println(unRec)
 }
