@@ -54,7 +54,7 @@ func main() {
 
 	xmlData, _ := xml.MarshalIndent(myRecord, "", "    ")
 	xmlData = []byte(xml.Header + string(xmlData))
-	fmt.Println("xmlData:", string(xmlData))
+	fmt.Println("\nxmlData:", string(xmlData))
 
 	data := &Record{}
 	err = xml.Unmarshal(xmlData, data)
@@ -70,5 +70,5 @@ func main() {
 	}
 
 	_ = json.Unmarshal([]byte(result), &myRecord)
-	fmt.Println("JSON:", myRecord)
+	fmt.Println("\nJSON:", myRecord)
 }
