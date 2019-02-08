@@ -4,8 +4,9 @@ import (
 	"fmt"
 )
 
-func negativeMatrix() {
+func negativeMatrix() error {
 
+	return nil
 }
 
 func main() {

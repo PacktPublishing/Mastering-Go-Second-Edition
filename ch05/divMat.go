@@ -4,8 +4,8 @@ import (
 	"fmt"
 )
 
-func inverseMatrix() {
-
+func inverseMatrix() error {
+	return nil
 }
 
 func main() {
