@@ -63,7 +63,7 @@ func validPuzzle(sl [][]int) bool {
 					val := sl[bigI][bigJ]
 					if val > 0 && val < 10 {
 						if mySlice[val-1] == 1 {
-							fmt.Println("Value appeared two times:", val)
+							fmt.Println("Appeared two times:", val)
 							return false
 						} else {
 							mySlice[val-1] = 1
