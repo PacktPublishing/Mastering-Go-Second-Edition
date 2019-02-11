@@ -159,7 +159,7 @@ func main() {
 	fmt.Println("\t\t\tPrinting inverse matrix!")
 	for i := 0; i < len(inverse); i++ {
 		for j := 0; j < len(inverse[0]); j++ {
-			fmt.Printf("%.2f ", inverse[i][j])
+			fmt.Printf("%.2f\t", inverse[i][j])
 		}
 		fmt.Println()
 	}
@@ -173,7 +173,7 @@ func main() {
 
 	for i := 0; i < len(r1); i++ {
 		for j := 0; j < len(r1[0]); j++ {
-			fmt.Printf("%.3f ", r1[i][j])
+			fmt.Printf("%.3f\t", r1[i][j])
 		}
 		fmt.Println()
 	}
