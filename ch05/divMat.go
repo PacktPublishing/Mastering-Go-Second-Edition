@@ -208,7 +208,6 @@ func inverseMatrix(A [][]float64) ([][]float64, error) {
 		return nil, nil
 	}
 
-	// Find adjoint
 	adj, err := adjoint(A)
 	if err != nil {
 		fmt.Println(err)
@@ -216,7 +215,6 @@ func inverseMatrix(A [][]float64) ([][]float64, error) {
 	}
 
 	fmt.Println("Determinant:", det)
-	// Find Inverse using formula "inverse(A) = adj(A)/det(A)"
 	for i := 0; i < N; i++ {
 		for j := 0; j < N; j++ {
 			inverse[i][j] = float64(adj[i][j]) / float64(det)
@@ -267,18 +265,13 @@ func main() {
 		fmt.Println("Need an integer:", arguments[1])
 		return
 	}
-
 	col := row
-
 	if col <= 0 {
 		fmt.Println("Need positive matrix dimensions!")
 		return
 	}
-	fmt.Printf("m1 is a %dx%d matrix\n", row, col)
 
-	// Initialize m1 with random numbers
 	m1 := createMatrix(row, col)
-	// Initialize m2 with random numbers
 	m2 := createMatrix(row, col)
 	fmt.Println("m1:", m1)
 	fmt.Println("m2:", m2)
