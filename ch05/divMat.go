@@ -78,7 +78,7 @@ func inverseMatrix(A [][]float64) ([][]float64, error) {
 	var inverse = createMatrix(N, N)
 	det := determinant(A, N)
 	if det == 0 {
-		fmt.Println("Singular matrix, can't find its inverse!")
+		fmt.Println("Singular matrix, cannot find its inverse!")
 		return nil, nil
 	}
 
