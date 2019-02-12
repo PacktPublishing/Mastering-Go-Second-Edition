@@ -5,6 +5,7 @@ import (
 	"math/rand"
 	"os"
 	"strconv"
+	"time"
 )
 
 func random(min, max int) int {
@@ -59,6 +60,7 @@ func main() {
 	m1 := make([][]int, row)
 	m2 := make([][]int, row)
 
+	rand.Seed(time.Now().Unix())
 	// Initialize m1 and m2 with random numbers
 	for i := 0; i < row; i++ {
 		for j := 0; j < col; j++ {
