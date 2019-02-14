@@ -8,6 +8,10 @@ func varFunc() {
 
 }
 
+func oneByOne() {
+
+}
+
 func main() {
 
 }
