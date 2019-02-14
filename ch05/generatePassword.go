@@ -15,7 +15,6 @@ func random(min, max int) int {
 func main() {
 	MIN := 0
 	MAX := 94
-	SEED := time.Now().Unix()
 	var LENGTH int64 = 8
 
 	arguments := os.Args
@@ -26,6 +25,7 @@ func main() {
 		fmt.Println("Using default values!")
 	}
 
+	SEED := time.Now().Unix()
 	rand.Seed(SEED)
 
 	startChar := "!"
