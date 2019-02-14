@@ -8,8 +8,10 @@ func varFunc() {
 
 }
 
-func oneByOne() {
+func oneByOne() int {
+	sum := 0
 
+	return sum
 }
 
 func main() {
