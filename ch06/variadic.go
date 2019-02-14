@@ -4,6 +4,10 @@ import (
 	"fmt"
 )
 
+func varFunc() {
+
+}
+
 func main() {
 
 }
