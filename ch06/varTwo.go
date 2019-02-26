@@ -8,35 +8,106 @@ import (
 	"os"
 )
 
-var SIZE = 2
+var SZ = 2
 var GLOBAL = 0
 var LOCAL = 0
 
-type visitor int
+type visitor struct {
+	Package map[*ast.GenDecl]bool
+}
+
+func makeVisitor(f *ast.File) visitor {
+	k := make(map[*ast.GenDecl]bool)
+	for _, a := range f.Decls {
+		v, ok := a.(*ast.GenDecl)
+		if ok {
+			k[v] = true
+		}
+	}
+
+	return visitor{
+		k,
+	}
+}
 
 func (v visitor) Visit(n ast.Node) ast.Visitor {
 	if n == nil {
 		return nil
 	}
 
-	switch t := n.(type) {
+	switch d := n.(type) {
 	case *ast.AssignStmt:
-		if t.Tok != token.DEFINE {
-			return v + 1
+		if d.Tok != token.DEFINE {
+			return v
 		}
-		for _, name := range t.Lhs {
-			fmt.Println("name:", name)
+
+		for _, name := range d.Lhs {
+			v.isItLocal(name)
 		}
 	case *ast.RangeStmt:
-		fmt.Println("t.Tok:", t.Key)
-		if len(string(t.Tok)) == SIZE {
-			LOCAL++
-		}
+		v.isItLocal(d.Key)
+		v.isItLocal(d.Value)
 	case *ast.FuncDecl:
+		if d.Recv != nil {
+			v.CheckAll(d.Recv.List)
+		}
 
+		v.CheckAll(d.Type.Params.List)
+		if d.Type.Results != nil {
+			v.CheckAll(d.Type.Results.List)
+		}
+	case *ast.GenDecl:
+		if d.Tok != token.VAR {
+			return v
+		}
+		for _, spec := range d.Specs {
+			value, ok := spec.(*ast.ValueSpec)
+			if ok {
+				for _, name := range value.Names {
+					if name.Name == "_" {
+						continue
+					}
+					if v.Package[d] {
+						if len(name.Name) == SZ {
+							fmt.Printf("** %s\n", name.Name)
+							GLOBAL++
+						}
+					} else {
+						if len(name.Name) == SZ {
+							fmt.Printf("* %s\n", name.Name)
+							LOCAL++
+						}
+					}
+				}
+			}
+		}
 	}
 
-	return v + 1
+	return v
+}
+
+func (v visitor) isItLocal(n ast.Node) {
+	identifier, ok := n.(*ast.Ident)
+	if ok == false {
+		return
+	}
+	if identifier.Name == "_" || identifier.Name == "" {
+		return
+	}
+	if identifier.Obj != nil && identifier.Obj.Pos() == identifier.Pos() {
+		if len(identifier.Name) == SZ {
+			fmt.Printf("* %s\n", identifier.Name)
+			LOCAL++
+		}
+	}
+}
+
+func (v visitor) CheckAll(fs []*ast.Field) {
+	for _, f := range fs {
+		for _, name := range f.Names {
+			v.isItLocal(name)
+		}
+	}
 }
 
 func main() {
@@ -45,18 +116,18 @@ func main() {
 		return
 	}
 
+	var v visitor
 	all := token.NewFileSet()
-
 	for _, file := range os.Args[1:] {
 		fmt.Println("Processing:", file)
-		var v visitor
 		f, err := parser.ParseFile(all, file, nil, parser.AllErrors)
 		if err != nil {
-			fmt.Println("Parsing error:", err)
-			return
+			fmt.Println(err)
+			continue
 		}
+
+		v = makeVisitor(f)
 		ast.Walk(v, f)
 	}
-
-	fmt.Printf("Local: %d, Global:%d with size %d\n", LOCAL, GLOBAL, SIZE)
+	fmt.Printf("Local: %d, Global:%d with a length of %d.\n", LOCAL, GLOBAL, SZ)
 }
