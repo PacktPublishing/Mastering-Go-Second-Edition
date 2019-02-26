@@ -18,8 +18,8 @@ type visitor struct {
 
 func makeVisitor(f *ast.File) visitor {
 	k := make(map[*ast.GenDecl]bool)
-	for _, a := range f.Decls {
-		v, ok := a.(*ast.GenDecl)
+	for _, aa := range f.Decls {
+		v, ok := aa.(*ast.GenDecl)
 		if ok {
 			k[v] = true
 		}
