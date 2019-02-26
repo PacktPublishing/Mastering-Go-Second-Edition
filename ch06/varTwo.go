@@ -5,7 +5,6 @@ import (
 	"go/ast"
 	"go/parser"
 	"go/token"
-	"log"
 	"os"
 )
 
@@ -20,7 +19,23 @@ func (v visitor) Visit(n ast.Node) ast.Visitor {
 		return nil
 	}
 
-	fmt.Printf("%s%T\n", strings.Repeat("\t", int(v)), n)
+	switch t := n.(type) {
+	case *ast.AssignStmt:
+		if t.Tok != token.DEFINE {
+			return v + 1
+		}
+		for _, name := range t.Lhs {
+			fmt.Println("name:", name)
+		}
+	case *ast.RangeStmt:
+		fmt.Println("t.Tok:", t.Key)
+		if len(string(t.Tok)) == SIZE {
+			LOCAL++
+		}
+	case *ast.FuncDecl:
+
+	}
+
 	return v + 1
 }
 
@@ -37,9 +52,11 @@ func main() {
 		var v visitor
 		f, err := parser.ParseFile(all, file, nil, parser.AllErrors)
 		if err != nil {
-			fmt.Println(err)
+			fmt.Println("Parsing error:", err)
 			return
 		}
 		ast.Walk(v, f)
 	}
+
+	fmt.Printf("Local: %d, Global:%d with size %d\n", LOCAL, GLOBAL, SIZE)
 }
