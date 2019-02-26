@@ -17,17 +17,15 @@ type visitor struct {
 }
 
 func makeVisitor(f *ast.File) visitor {
-	k := make(map[*ast.GenDecl]bool)
+	k1 := make(map[*ast.GenDecl]bool)
 	for _, aa := range f.Decls {
 		v, ok := aa.(*ast.GenDecl)
 		if ok {
-			k[v] = true
+			k1[v] = true
 		}
 	}
 
-	return visitor{
-		k,
-	}
+	return visitor{k1}
 }
 
 func (v visitor) Visit(n ast.Node) ast.Visitor {
@@ -82,7 +80,6 @@ func (v visitor) Visit(n ast.Node) ast.Visitor {
 			}
 		}
 	}
-
 	return v
 }
 
