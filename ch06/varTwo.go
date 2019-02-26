@@ -5,9 +5,13 @@ import (
 	"go/ast"
 	"go/parser"
 	"go/token"
+	"log"
 	"os"
-	"strings"
 )
+
+var SIZE = 2
+var GLOBAL = 0
+var LOCAL = 0
 
 type visitor int
 
