@@ -6,9 +6,10 @@ import (
 	"go/parser"
 	"go/token"
 	"os"
+	"strconv"
 )
 
-var SZ = 2
+var SIZE = 2
 var GLOBAL = 0
 var LOCAL = 0
 
@@ -66,12 +67,12 @@ func (v visitor) Visit(n ast.Node) ast.Visitor {
 						continue
 					}
 					if v.Package[d] {
-						if len(name.Name) == SZ {
+						if len(name.Name) == SIZE {
 							fmt.Printf("** %s\n", name.Name)
 							GLOBAL++
 						}
 					} else {
-						if len(name.Name) == SZ {
+						if len(name.Name) == SIZE {
 							fmt.Printf("* %s\n", name.Name)
 							LOCAL++
 						}
@@ -92,7 +93,7 @@ func (v visitor) isItLocal(n ast.Node) {
 		return
 	}
 	if identifier.Obj != nil && identifier.Obj.Pos() == identifier.Pos() {
-		if len(identifier.Name) == SZ {
+		if len(identifier.Name) == SIZE {
 			fmt.Printf("* %s\n", identifier.Name)
 			LOCAL++
 		}
@@ -108,14 +109,20 @@ func (v visitor) CheckAll(fs []*ast.Field) {
 }
 
 func main() {
-	if len(os.Args) == 1 {
+	if len(os.Args) <= 2 {
 		fmt.Println("Not enough arguments!")
 		return
 	}
 
+	SIZE, err := strconv.Atoi(os.Args[1])
+	if err != nil {
+		SIZE = 2
+		fmt.Println("Using default SIZE:", SIZE)
+	}
+
 	var v visitor
 	all := token.NewFileSet()
-	for _, file := range os.Args[1:] {
+	for _, file := range os.Args[2:] {
 		fmt.Println("Processing:", file)
 		f, err := parser.ParseFile(all, file, nil, parser.AllErrors)
 		if err != nil {
@@ -126,5 +133,5 @@ func main() {
 		v = makeVisitor(f)
 		ast.Walk(v, f)
 	}
-	fmt.Printf("Local: %d, Global:%d with a length of %d.\n", LOCAL, GLOBAL, SZ)
+	fmt.Printf("Local: %d, Global:%d with a length of %d.\n", LOCAL, GLOBAL, SIZE)
 }
