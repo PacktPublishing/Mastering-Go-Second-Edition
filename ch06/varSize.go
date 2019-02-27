@@ -89,9 +89,11 @@ func (v visitor) isItLocal(n ast.Node) {
 	if ok == false {
 		return
 	}
+
 	if identifier.Name == "_" || identifier.Name == "" {
 		return
 	}
+
 	if identifier.Obj != nil && identifier.Obj.Pos() == identifier.Pos() {
 		if len(identifier.Name) == SIZE {
 			fmt.Printf("* %s\n", identifier.Name)
@@ -114,10 +116,12 @@ func main() {
 		return
 	}
 
-	SIZE, err := strconv.Atoi(os.Args[1])
+	temp, err := strconv.Atoi(os.Args[1])
 	if err != nil {
 		SIZE = 2
 		fmt.Println("Using default SIZE:", SIZE)
+	} else {
+		SIZE = temp
 	}
 
 	var v visitor
