@@ -1,0 +1,2 @@
+# myModule
+Sample Go module
