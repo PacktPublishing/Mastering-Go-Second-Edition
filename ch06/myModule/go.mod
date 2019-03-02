@@ -1,3 +1,3 @@
-module github.com/mactsouk/myModule/v2
+module github.com/mactsouk/myModule
 
 go 1.12
