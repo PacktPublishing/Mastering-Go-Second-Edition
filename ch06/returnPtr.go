@@ -11,6 +11,6 @@ func returnPtr(x int) *int {
 
 func main() {
 	sq := returnPtr(10)
-	fmt.Println("sq:", *sq)
-	fmt.Println("sq:", sq)
+	fmt.Println("sq value:", *sq)
+	fmt.Println("sq memory address:", sq)
 }
