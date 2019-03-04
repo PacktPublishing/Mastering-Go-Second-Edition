@@ -12,6 +12,5 @@ func returnPtr(x int) *int {
 func main() {
 	sq := returnPtr(10)
 	fmt.Println("sq:", *sq)
-
 	fmt.Println("sq:", sq)
 }
