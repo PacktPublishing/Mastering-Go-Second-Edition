@@ -41,10 +41,10 @@ func main() {
 
 	data := &S{
 		Map: map[string]string{
-			"V1": "1v",
-			"V2": "2v",
-			"V3": "3v",
-			"V4": "4v",
+			"V1": "v1v",
+			"V2": "v2v",
+			"V3": "v3v",
+			"V4": "v4v",
 		},
 	}
 
@@ -54,10 +54,12 @@ func main() {
 		return
 	}
 
-	fmt.Println("MapVal:", w.MapVal)
-
 	r := w.MapVal
-	iType := r.Type()
-	fmt.Printf("i Type: %s\n", iType)
-	fmt.Printf("The %d fields of %s are:\n", r.NumField(), iType)
+	fmt.Println("MapVal:", r)
+	rType := r.Type()
+	fmt.Printf("Type of r: %s\n", rType)
+
+	for _, key := range r.MapKeys() {
+		fmt.Println("key:", key, "value:", r.MapIndex(key))
+	}
 }
