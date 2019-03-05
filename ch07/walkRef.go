@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"github.com/mitchellh/mapstructure"
 	"github.com/mitchellh/reflectwalk"
 	"reflect"
 )
@@ -42,10 +41,10 @@ func main() {
 
 	data := &S{
 		Map: map[string]string{
-			"v1": "1v",
-			"v2": "2v",
-			"v3": "3v",
-			"v4": "4v",
+			"V1": "1v",
+			"V2": "2v",
+			"V3": "3v",
+			"V4": "4v",
 		},
 	}
 
@@ -54,12 +53,11 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-	fmt.Println(w.MapVal)
 
-	var result Values
-	if err := mapstructure.Decode(w.MapVal, &result); err != nil {
-		panic(err)
-	}
+	fmt.Println("MapVal:", w.MapVal)
 
-	fmt.Printf("%+v", result)
+	r := w.MapVal
+	iType := r.Type()
+	fmt.Printf("i Type: %s\n", iType)
+	fmt.Printf("The %d fields of %s are:\n", r.NumField(), iType)
 }
