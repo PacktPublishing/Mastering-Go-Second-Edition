@@ -30,10 +30,10 @@ func main() {
 	}
 	fmt.Printf("Using config: %s\n", viper.ConfigFileUsed())
 
-	if viper.IsSet("item1.key1") {
-		fmt.Println("item1.val1:", viper.Get("item1.key1"))
+	if viper.IsSet("item1.k1") {
+		fmt.Println("item1.val1:", viper.Get("item1.k1"))
 	} else {
-		fmt.Println("item1.key1 not set!")
+		fmt.Println("item1.k1 not set!")
 	}
 
 	if viper.IsSet("item1.k2") {
@@ -42,7 +42,7 @@ func main() {
 		fmt.Println("item1.k2 not set!")
 	}
 
-	if !viper.IsSet("item3.key1") {
-		fmt.Println("item3.key1 not set!")
+	if !viper.IsSet("item3.k1") {
+		fmt.Println("item3.k1 is not set!")
 	}
 }

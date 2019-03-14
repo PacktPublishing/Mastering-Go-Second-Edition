@@ -1,0 +1,13 @@
+{
+    "item1": {
+        "key1": "val1",
+        "key2": false,
+        "key3": "val3"
+    },
+    "item2": {
+        "key1": "val1",
+        "key2": true,
+        "key3": "val3"
+    }
+}
+

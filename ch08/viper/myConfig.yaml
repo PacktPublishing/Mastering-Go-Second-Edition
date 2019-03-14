@@ -1,0 +1,5 @@
+    item1:
+        k1:
+            - true
+        k2:
+            - myValue
