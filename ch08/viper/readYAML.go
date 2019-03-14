@@ -36,10 +36,10 @@ func main() {
 		fmt.Println("item1.key1 not set!")
 	}
 
-	if viper.IsSet("item1.key2") {
-		fmt.Println("item1.val2:", viper.Get("item1.key2"))
+	if viper.IsSet("item1.k2") {
+		fmt.Println("item1.val2:", viper.Get("item1.k2"))
 	} else {
-		fmt.Println("item1.key2 not set!")
+		fmt.Println("item1.k2 not set!")
 	}
 
 	if !viper.IsSet("item3.key1") {
