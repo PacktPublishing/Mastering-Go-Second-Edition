@@ -9,7 +9,6 @@ func main() {
 	viper.SetConfigType("json")
 	viper.SetConfigFile("./myConfig.json")
 	fmt.Printf("Using config: %s\n", viper.ConfigFileUsed())
-
 	viper.ReadInConfig()
 
 	if viper.IsSet("item1.key1") {
