@@ -31,7 +31,7 @@ func main() {
 		TOTAL, _ = strconv.Atoi(os.Args[3])
 		topic = os.Args[4]
 	} else {
-		fmt.Println("Usage:", os.Args[0], "MIX MAX TOTAL KAFKA_TOPIC")
+		fmt.Println("Usage:", os.Args[0], "MIX MAX TOTAL TOPIC")
 		return
 	}
 

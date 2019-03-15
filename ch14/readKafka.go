@@ -15,7 +15,7 @@ type Record struct {
 
 func main() {
 	if len(os.Args) < 2 {
-		fmt.Println("Need Kafka topic name.")
+		fmt.Println("Need a Kafka topic name.")
 		return
 	}
 
