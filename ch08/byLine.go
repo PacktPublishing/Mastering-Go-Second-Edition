@@ -10,7 +10,6 @@ import (
 
 func lineByLine(file string) error {
 	var err error
-
 	f, err := os.Open(file)
 	if err != nil {
 		return err
@@ -45,3 +44,4 @@ func main() {
 		}
 	}
 }
+
