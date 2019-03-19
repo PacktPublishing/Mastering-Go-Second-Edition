@@ -8,7 +8,6 @@ import (
 )
 
 func main() {
-
 	r := strings.NewReader("test")
 	fmt.Println("r length:", r.Len())
 
@@ -36,3 +35,4 @@ func main() {
 	}
 	fmt.Printf("Wrote %d bytes to os.Stderr\n", n)
 }
+
