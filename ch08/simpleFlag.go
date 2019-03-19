@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	minusK := flag.Bool("k", true, "k")
+	minusK := flag.Bool("k", true, "k flag")
 	minusO := flag.Int("O", 1, "O")
 	flag.Parse()
 
