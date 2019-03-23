@@ -53,7 +53,7 @@ func third(in <-chan int) {
 func main() {
 	if len(os.Args) != 3 {
 		fmt.Println("Need two integer parameters!")
-		os.Exit(1)
+		return
 	}
 
 	n1, _ := strconv.Atoi(os.Args[1])
