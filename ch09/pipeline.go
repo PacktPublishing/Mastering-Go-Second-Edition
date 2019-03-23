@@ -47,7 +47,7 @@ func third(in <-chan int) {
 	for x2 := range in {
 		sum = sum + x2
 	}
-	fmt.Printf("The sum of the random numbers is %d\n", sum)
+	fmt.Printf("The sum of the random numbers is %d.\n", sum)
 }
 
 func main() {
@@ -60,7 +60,7 @@ func main() {
 	n2, _ := strconv.Atoi(os.Args[2])
 
 	if n1 > n2 {
-		fmt.Printf("%d should be smaller than %d\n", n1, n2)
+		fmt.Printf("%d should be smaller than %d.\n", n1, n2)
 		return
 	}
 
