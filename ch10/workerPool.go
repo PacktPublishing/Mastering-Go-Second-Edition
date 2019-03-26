@@ -58,7 +58,7 @@ func main() {
 
 	if len(os.Args) != 3 {
 		fmt.Println("Need #jobs and #workers!")
-		os.Exit(1)
+		return
 	}
 
 	nJobs, err := strconv.Atoi(os.Args[1])
