@@ -7,11 +7,11 @@ import (
 	"sync/atomic"
 )
 
-type atomicCounter struct {
+type atomCounter struct {
 	val int64
 }
 
-func (c *atomicCounter) Value() int64 {
+func (c *atomCounter) Value() int64 {
 	return atomic.LoadInt64(&c.val)
 }
 
@@ -23,12 +23,13 @@ func main() {
 	Y := *minusY
 
 	var waitGroup sync.WaitGroup
-	counter := atomicCounter{}
+	counter := atomCounter{}
 	for i := 0; i < X; i++ {
 		waitGroup.Add(1)
 		go func(no int) {
 			defer waitGroup.Done()
 			for i := 0; i < Y; i++ {
+				// counter.val++
 				atomic.AddInt64(&counter.val, 1)
 			}
 		}(i)
