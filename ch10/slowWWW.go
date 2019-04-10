@@ -37,6 +37,6 @@ func main() {
 	err := http.ListenAndServe(PORT, nil)
 	if err != nil {
 		fmt.Println(err)
-		os.Exit(10)
+		return
 	}
 }
