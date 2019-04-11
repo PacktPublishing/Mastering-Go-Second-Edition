@@ -11,7 +11,7 @@ func main() {
 	arguments := os.Args
 	if len(arguments) != 2 {
 		fmt.Println("Give me a natural number!")
-		os.Exit(1)
+		return
 	}
 	numGR, err := strconv.Atoi(os.Args[1])
 	if err != nil {
