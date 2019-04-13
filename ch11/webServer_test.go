@@ -68,7 +68,7 @@ func Test_count(t *testing.T) {
 
 	insert_record("INSERT INTO users (first_name, last_name) VALUES ('Epifanios', 'Doe')")
 	insert_record("INSERT INTO users (first_name, last_name) VALUES ('Mihalis', 'Tsoukalos')")
-	insert_record("INSERT INTO users (first_name, last_name) VALUES ('Mihalis', 'Doe')")
+	insert_record("INSERT INTO users (first_name, last_name) VALUES ('Mihalis', 'Unknown')")
 
 	connStr := "user=postgres dbname=s2 sslmode=disable"
 	db, err := sql.Open("postgres", connStr)
