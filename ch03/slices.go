@@ -7,11 +7,11 @@ import (
 func main() {
 	aSlice := []int{1, 2, 3, 4, 5}
 	fmt.Println(aSlice)
-	integer := make([]int, 2)
-	fmt.Println(integer)
+	integers := make([]int, 2)
+	fmt.Println(integers)
 
-	integer = nil
-	fmt.Println(integer)
+	integers = nil
+	fmt.Println(integers)
 
 	anArray := [5]int{-1, -2, -3, -4, -5}
 	refAnArray := anArray[:]
