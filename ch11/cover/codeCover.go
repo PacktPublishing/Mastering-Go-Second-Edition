@@ -1,8 +1,4 @@
-package main
-
-import (
-	"fmt"
-)
+package codeCover
 
 func fibo1(n int) int {
 	if n == 0 {
@@ -22,9 +18,4 @@ func fibo2(n int) int {
 	} else {
 		return fibo1(n-1) + fibo1(n-2)
 	}
-}
-
-func main() {
-	fmt.Println(fibo1(40))
-	fmt.Println(fibo2(40))
 }

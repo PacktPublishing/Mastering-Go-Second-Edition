@@ -1,31 +1,29 @@
-package main
+package codeCover
 
 import (
 	"testing"
 )
 
-var result int
-
-func benchmarkfibo1(b *testing.B, n int) {
-	var r int
-	for i := 0; i < b.N; i++ {
-		r = fibo1(n)
+func TestFibo1(t *testing.T) {
+	if fibo1(1) != 1 {
+		t.Errorf("Error fibo1(1): %d\n", fibo1(1))
 	}
-	result = r
 }
 
-func benchmarkfibo2(b *testing.B, n int) {
-	var r int
-	for i := 0; i < b.N; i++ {
-		r = fibo2(n)
+func TestFibo2(t *testing.T) {
+	if fibo2(0) != 0 {
+		t.Errorf("Error fibo2(0): %d\n", fibo1(0))
 	}
-	result = r
 }
 
-func Testfibo1(b *testing.B) {
-	benchmarkfibo1(b, 30)
+func TestFibo1_10(t *testing.T) {
+	if fibo1(10) == 1 {
+		t.Errorf("Error fibo1(1): %d\n", fibo1(1))
+	}
 }
 
-func Testfibo2(b *testing.B) {
-	benchmarkfibo2(b, 30)
+func TestFibo2_10(t *testing.T) {
+	if fibo2(10) != 0 {
+		t.Errorf("Error fibo2(0): %d\n", fibo1(0))
+	}
 }
