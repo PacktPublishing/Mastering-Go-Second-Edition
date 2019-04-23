@@ -13,9 +13,9 @@ func main() {
 		X, Y, Z int8
 		S       float32
 	}
-	aPoint := rand.New(rand.NewSource(time.Now().Unix()))
+	ran := rand.New(rand.NewSource(time.Now().Unix()))
 
 	myValues := reflect.TypeOf(point3D{})
-	x, _ := quick.Value(myValues, aPoint)
+	x, _ := quick.Value(myValues, ran)
 	fmt.Println(x)
 }
