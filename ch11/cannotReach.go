@@ -6,7 +6,7 @@ import (
 
 func f1() int {
 	fmt.Println("Entering f1()")
-	//	return -10
+	return -10
 	fmt.Println("Exiting f1()")
 	return -1
 }
