@@ -1,0 +1,13 @@
+message Request {
+  string text    = 1;
+  string subtext = 2;
+}
+
+message Response {
+  string text    = 1;
+  string subtext = 2;
+}
+
+service MessageService {
+	rpc SayIt (Request) returns (Response);
+}
