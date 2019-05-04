@@ -2,15 +2,15 @@ package main
 
 import (
 	"fmt"
-	"github.com/mactsouk/protobuf"
+	p "github.com/mactsouk/protobuf"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
 )
 
 var port = ":8080"
 
-func SayIt(ctx context.Context, m message_service.MessageServiceClient, text string) (*message_service.Response, error) {
-	request := &message_service.Request{
+func AboutToSayIt(ctx context.Context, m p.MessageServiceClient, text string) (*p.Response, error) {
+	request := &p.Request{
 		Text:    text,
 		Subtext: "New Message!",
 	}
@@ -31,9 +31,9 @@ func main() {
 		return
 	}
 
-	client := message_service.NewMessageServiceClient(conn)
+	client := p.NewMessageServiceClient(conn)
 
-	r, err := SayIt(context.Background(), client, "My Message!")
+	r, err := AboutToSayIt(context.Background(), client, "My Message!")
 	if err != nil {
 		fmt.Println(err)
 	}
