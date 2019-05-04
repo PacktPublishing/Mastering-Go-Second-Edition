@@ -16,7 +16,6 @@ func AboutToSayIt(ctx context.Context, m p.MessageServiceClient, text string) (*
 	}
 
 	r, err := m.SayIt(ctx, request)
-
 	if err != nil {
 		return nil, err
 	}
@@ -32,7 +31,6 @@ func main() {
 	}
 
 	client := p.NewMessageServiceClient(conn)
-
 	r, err := AboutToSayIt(context.Background(), client, "My Message!")
 	if err != nil {
 		fmt.Println(err)
