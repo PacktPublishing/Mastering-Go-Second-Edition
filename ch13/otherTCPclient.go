@@ -16,7 +16,6 @@ func main() {
 	}
 
 	CONNECT := arguments[1]
-
 	tcpAddr, err := net.ResolveTCPAddr("tcp4", CONNECT)
 	if err != nil {
 		fmt.Println("ResolveTCPAddr:", err.Error())
@@ -44,3 +43,4 @@ func main() {
 		}
 	}
 }
+

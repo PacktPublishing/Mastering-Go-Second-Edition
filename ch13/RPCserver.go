@@ -10,6 +10,7 @@ import (
 )
 
 type MyInterface struct{}
+var PORT = ":1234"
 
 func Power(x, y float64) float64 {
 	return math.Pow(x, y)
@@ -26,7 +27,6 @@ func (t *MyInterface) Power(arguments *sharedRPC.MyFloats, reply *float64) error
 }
 
 func main() {
-	PORT := ":1234"
 	arguments := os.Args
 	if len(arguments) != 1 {
 		PORT = ":" + arguments[1]

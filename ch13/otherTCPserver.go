@@ -15,7 +15,6 @@ func main() {
 	}
 
 	SERVER := "localhost" + ":" + arguments[1]
-
 	s, err := net.ResolveTCPAddr("tcp", SERVER)
 	if err != nil {
 		fmt.Println(err)
@@ -56,3 +55,4 @@ func main() {
 		}
 	}
 }
+
