@@ -8,7 +8,7 @@ import (
 var PORT = ":1443"
 
 func Default(w http.ResponseWriter, req *http.Request) {
-	fmt.Fprintf(w, "This is an example server.\n")
+	fmt.Fprintf(w, "This is an example HTTPS server!\n")
 }
 
 func main() {
