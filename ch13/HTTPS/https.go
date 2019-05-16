@@ -5,17 +5,19 @@ import (
 	"net/http"
 )
 
+var PORT = ":1443"
+
 func Default(w http.ResponseWriter, req *http.Request) {
-	fmt.Fprintf(w, "This is an example server.\n")
 	fmt.Fprintf(w, "This is an example server.\n")
 }
 
 func main() {
 	http.HandleFunc("/", Default)
-	err := http.ListenAndServeTLS(":443", "server.crt", "server.key", nil)
+	fmt.Println("Listening to port number", PORT)
 
+	err := http.ListenAndServeTLS(PORT, "server.crt", "server.key", nil)
 	if err != nil {
-		fmt.Println("ListenAndServe: ", err)
+		fmt.Println("ListenAndServeTLS: ", err)
 		return
 	}
 }
