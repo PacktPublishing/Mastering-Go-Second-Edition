@@ -5,7 +5,6 @@ import (
 	"crypto/x509"
 	"fmt"
 	"io/ioutil"
-	"log"
 	"net/http"
 )
 
@@ -36,5 +35,5 @@ func main() {
 		TLSConfig: cfg,
 	}
 
-	log.Fatal(srv.ListenAndServeTLS("server.crt", "server.key"))
+	fmt.Println(srv.ListenAndServeTLS("server.crt", "server.key"))
 }

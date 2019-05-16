@@ -2,13 +2,12 @@ package main
 
 import (
 	"fmt"
-	"io"
 	"net/http"
 )
 
 func Default(w http.ResponseWriter, req *http.Request) {
 	fmt.Fprintf(w, "This is an example server.\n")
-	io.WriteString(w, "This is an example server.\n")
+	fmt.Fprintf(w, "This is an example server.\n")
 }
 
 func main() {
