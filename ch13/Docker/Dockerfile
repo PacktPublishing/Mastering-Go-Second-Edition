@@ -1,7 +1,7 @@
-FROM golang:alpine
+FROM golang:latest
 
 RUN mkdir /files
-COPY kvTCP /files
+COPY kvTCP.go /files
 WORKDIR /files
 
 RUN go build -o /files/kvTCP kvTCP.go
