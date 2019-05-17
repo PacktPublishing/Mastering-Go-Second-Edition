@@ -8,11 +8,13 @@ import (
 	"net/http"
 )
 
+var PORT = ":1443"
+
 type handler struct {
 }
 
 func (h *handler) ServeHTTP(w http.ResponseWriter, req *http.Request) {
-	w.Write([]byte("Hello there securely!\n"))
+	w.Write([]byte("Hello world!\n"))
 }
 
 func main() {
@@ -30,10 +32,10 @@ func main() {
 	}
 
 	srv := &http.Server{
-		Addr:      ":8443",
+		Addr:      PORT,
 		Handler:   &handler{},
 		TLSConfig: cfg,
 	}
-
+	fmt.Println("Listening to port number", PORT)
 	fmt.Println(srv.ListenAndServeTLS("server.crt", "server.key"))
 }
