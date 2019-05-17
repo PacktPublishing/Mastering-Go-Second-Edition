@@ -5,4 +5,4 @@ COPY kvTCP.go /files
 WORKDIR /files
 
 RUN go build -o /files/kvTCP kvTCP.go
-ENTRYPOINT ["/files/kvTCP 80"]
+ENTRYPOINT ["/files/kvTCP","80"]
