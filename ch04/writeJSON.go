@@ -33,7 +33,8 @@ func main() {
 		Tel: []Telephone{Telephone{Mobile: true, Number: "1234-567"},
 			Telephone{Mobile: true, Number: "1234-abcd"},
 			Telephone{Mobile: false, Number: "abcc-567"},
-		}}
+		},
+	}
 
 	saveToJSON(os.Stdout, myRecord)
 }

@@ -46,9 +46,8 @@ func main() {
 			trial := net.ParseIP(ip)
 			if trial.To4() == nil {
 				continue
-			} else {
-				fmt.Println(ip)
 			}
+			fmt.Println(ip)
 		}
 	}
 }
