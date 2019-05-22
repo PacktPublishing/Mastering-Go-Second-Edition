@@ -35,11 +35,9 @@ func insert(t *Tree, v int) *Tree {
 	if t == nil {
 		return &Tree{nil, v, nil}
 	}
-
 	if v == t.Value {
 		return t
 	}
-
 	if v < t.Value {
 		t.Left = insert(t.Left, v)
 		return t
