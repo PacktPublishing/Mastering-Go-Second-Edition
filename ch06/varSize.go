@@ -118,7 +118,6 @@ func main() {
 
 	temp, err := strconv.Atoi(os.Args[1])
 	if err != nil {
-		SIZE = 2
 		fmt.Println("Using default SIZE:", SIZE)
 	} else {
 		SIZE = temp
