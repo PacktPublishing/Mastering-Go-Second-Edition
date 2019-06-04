@@ -40,8 +40,13 @@ func medianValue(x []float64) float64 {
 }
 
 func variance(x []float64) float64 {
+	mean := meanValue(x)
+	sum := float64(0)
+	for _, v := range x {
+		sum = sum + (v-mean)*(v-mean)
+	}
 
-	return 0
+	return sum / float64(len(x))
 }
 
 func covariance(x []float64) float64 {
@@ -84,8 +89,9 @@ func main() {
 
 	sort.Float64s(data)
 
-	fmt.Println("min:", min(data))
-	fmt.Println("min:", max(data))
+	fmt.Println("Min:", min(data))
+	fmt.Println("Max:", max(data))
 	fmt.Println("Mean:", meanValue(data))
 	fmt.Println("Median:", medianValue(data))
+	fmt.Println("Variance:", variance(data))
 }
