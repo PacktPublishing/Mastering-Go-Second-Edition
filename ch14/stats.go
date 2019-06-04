@@ -20,8 +20,12 @@ func max(x []float64) float64 {
 }
 
 func meanValue(x []float64) float64 {
+	sum := float64(0)
+	for _, v := range x {
+		sum = sum + v
+	}
 
-	return 0
+	return sum / float64(len(x))
 }
 
 func medianValue(x []float64) float64 {
@@ -86,5 +90,6 @@ func main() {
 
 	fmt.Println("min:", min(data))
 	fmt.Println("min:", max(data))
+	fmt.Println("Mean:", meanValue(data))
 	fmt.Println("Median:", medianValue(data))
 }
