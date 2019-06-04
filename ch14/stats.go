@@ -25,10 +25,16 @@ func meanValue(x []float64) float64 {
 }
 
 func medianValue(x []float64) float64 {
+	length := len(x)
 
-	// Odd
+	if length%2 == 1 {
+		// Odd
+		return x[(length-1)/2]
 
-	// Even
+	} else {
+		// Even
+		return (x[length/2] + x[(length/2)-1]) / 2
+	}
 
 	return 0
 }
@@ -76,12 +82,9 @@ func main() {
 		}
 	}
 
-	// Sort slice
-	sort.Slice(data, func(i, j int) bool {
-		return data[i] < data[j]
-	})
+	sort.Float64s(data)
 
 	fmt.Println("min:", min(data))
 	fmt.Println("min:", max(data))
-
+	fmt.Println("Median:", medianValue(data))
 }
