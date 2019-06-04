@@ -6,25 +6,25 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"sort"
 	"strconv"
+	"strings"
 )
 
-func min() float64 {
+func min(x []float64) float64 {
+	return x[0]
+}
+
+func max(x []float64) float64 {
+	return x[len(x)-1]
+}
+
+func meanValue(x []float64) float64 {
 
 	return 0
 }
 
-func max() float64 {
-
-	return 0
-}
-
-func meanValue() float64 {
-
-	return 0
-}
-
-func medianValue() float64 {
+func medianValue(x []float64) float64 {
 
 	// Odd
 
@@ -33,12 +33,12 @@ func medianValue() float64 {
 	return 0
 }
 
-func variance() float64 {
+func variance(x []float64) float64 {
 
 	return 0
 }
 
-func covariance() float64 {
+func covariance(x []float64) float64 {
 
 	return 0
 }
@@ -69,7 +69,7 @@ func main() {
 			fmt.Printf("error reading file %s", err)
 			break
 		}
-
+		line = strings.TrimRight(line, "\r\n")
 		value, err := strconv.ParseFloat(line, 64)
 		if err == nil {
 			data = append(data, value)
@@ -77,7 +77,11 @@ func main() {
 	}
 
 	// Sort slice
+	sort.Slice(data, func(i, j int) bool {
+		return data[i] < data[j]
+	})
 
-	fmt.Println(data)
+	fmt.Println("min:", min(data))
+	fmt.Println("min:", max(data))
 
 }
