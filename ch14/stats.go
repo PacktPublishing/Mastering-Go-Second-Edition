@@ -45,13 +45,7 @@ func variance(x []float64) float64 {
 	for _, v := range x {
 		sum = sum + (v-mean)*(v-mean)
 	}
-
 	return sum / float64(len(x))
-}
-
-func covariance(x []float64) float64 {
-
-	return 0
 }
 
 func main() {
@@ -94,4 +88,5 @@ func main() {
 	fmt.Println("Mean:", meanValue(data))
 	fmt.Println("Median:", medianValue(data))
 	fmt.Println("Variance:", variance(data))
+	fmt.Println("Standard Deviation:", math.Sqrt(variance(data)))
 }
