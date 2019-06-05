@@ -27,6 +27,7 @@ func main() {
 		fmt.Println(err)
 		return
 	}
+	defer file.Close()
 
 	r := csv.NewReader(file)
 
