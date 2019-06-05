@@ -70,7 +70,7 @@ func main() {
 
 	for i, v := range records {
 		if len(v) != 2 {
-			fmt.Println("Expected two elements")
+			fmt.Println("Expected two elements per line!")
 			return
 		}
 
