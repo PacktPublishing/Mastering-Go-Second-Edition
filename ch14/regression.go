@@ -14,16 +14,6 @@ type xy struct {
 	y []float64
 }
 
-func (d xy) Len() int {
-	return len(d.x)
-}
-
-func (d xy) XY(i int) (x, y float64) {
-	x = d.x[i]
-	y = d.y[i]
-	return
-}
-
 func main() {
 	flag.Parse()
 	if len(flag.Args()) == 0 {
