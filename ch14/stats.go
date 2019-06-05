@@ -52,7 +52,7 @@ func variance(x []float64) float64 {
 func main() {
 	flag.Parse()
 	if len(flag.Args()) == 0 {
-		fmt.Printf("usage: byLine filename\n")
+		fmt.Printf("usage: stats filename\n")
 		return
 	}
 
