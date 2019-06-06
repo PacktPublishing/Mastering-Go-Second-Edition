@@ -60,4 +60,5 @@ func main() {
 
 	b, a := stat.LinearRegression(data.x, data.y, nil, false)
 	fmt.Printf("%.4v x + %.4v\n", a, b)
+	fmt.Printf("a = %.4v b = %.4v\n", a, b)
 }
