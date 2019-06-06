@@ -52,6 +52,7 @@ func main() {
 		if s, err := strconv.ParseFloat(v[0], 64); err == nil {
 			data.y[i] = s
 		}
+
 		if s, err := strconv.ParseFloat(v[1], 64); err == nil {
 			data.x[i] = s
 		}
