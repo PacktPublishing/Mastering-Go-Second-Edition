@@ -10,22 +10,28 @@ import (
 
 func main() {
 	flag.Parse()
-	if len(flag.Args()) == 0 {
-		fmt.Printf("usage: classify filename\n")
+	if len(flag.Args()) < 2 {
+		fmt.Printf("usage: classify filename k\n")
 		return
 	}
 
-	dataset := flagArgs()[0]
+	dataset := flag.Args()[0]
 	rawData, err := base.ParseCSVToInstances(dataset, false)
 	if err != nil {
 		panic(err)
+	}
+
+	k, err := strconv.Atoi(flag.Args()[1])
+	if err != nil {
+		fmt.Println(err)
+		return
 	}
 
 	// Print a pleasant summary of your data.
 	fmt.Println(rawData)
 
 	//Initialises a new KNN classifier
-	cls := knn.NewKnnClassifier("euclidean", "linear", 2)
+	cls := knn.NewKnnClassifier("euclidean", "linear", k)
 
 	//Do a training-test split
 	trainData, testData := base.InstancesTrainTestSplit(rawData, 0.50)
@@ -42,5 +48,6 @@ func main() {
 	if err != nil {
 		panic(fmt.Sprintf("Unable to get confusion matrix: %s", err.Error()))
 	}
+
 	fmt.Println(evaluation.GetSummary(confusionMat))
 }
