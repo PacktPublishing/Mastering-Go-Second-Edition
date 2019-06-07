@@ -3,6 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
+	"strconv"
+
 	"github.com/sjwhitworth/golearn/base"
 	"github.com/sjwhitworth/golearn/evaluation"
 	"github.com/sjwhitworth/golearn/knn"
@@ -33,7 +35,7 @@ func main() {
 	//Initialises a new KNN classifier
 	cls := knn.NewKnnClassifier("euclidean", "linear", k)
 
-	//Do a training-test split
+	// Do a training-test split
 	trainData, testData := base.InstancesTrainTestSplit(rawData, 0.50)
 	cls.Fit(trainData)
 
