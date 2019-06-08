@@ -8,11 +8,15 @@ import (
 )
 
 var observations []gokmeans.Node = []gokmeans.Node{
-	gokmeans.Node{20.0, 20.0, 20.0, 20.0},
-	gokmeans.Node{21.0, 21.0, 21.0, 21.0},
-	gokmeans.Node{100.5, 100.5, 100.5, 100.5},
-	gokmeans.Node{50.1, 50.1, 50.1, 50.1},
-	gokmeans.Node{64.2, 64.2, 64.2, 64.2},
+	gokmeans.Node{4},
+	gokmeans.Node{5},
+	gokmeans.Node{6},
+	gokmeans.Node{8},
+	gokmeans.Node{10},
+	gokmeans.Node{12},
+	gokmeans.Node{15},
+	gokmeans.Node{0},
+	gokmeans.Node{-1},
 }
 
 func main() {
@@ -29,7 +33,7 @@ func main() {
 	}
 
 	if success, centroids := gokmeans.Train(observations, k, 50); success {
-		fmt.Println("The centroids are")
+		fmt.Println("The centroids are the following:")
 		for _, centroid := range centroids {
 			fmt.Println(centroid)
 		}
