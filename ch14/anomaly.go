@@ -43,7 +43,6 @@ func main() {
 	for i := 0; i < MAX; i++ {
 		data = append(data, float64(random(0, MAX)))
 	}
-
 	fmt.Println("data:", data)
 
 	anom, _ := anomalyzer.NewAnomalyzer(conf, data)
