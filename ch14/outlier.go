@@ -44,6 +44,7 @@ func main() {
 	}
 	defer f.Close()
 
+	data := make([]float64, 0)
 	r := bufio.NewReader(f)
 	for {
 		line, err := r.ReadString('\n')
