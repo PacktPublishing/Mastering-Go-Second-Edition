@@ -26,7 +26,6 @@ func first(min, max int, out chan<- int) {
 			return
 		case out <- random(min, max):
 		}
-
 	}
 }
 
@@ -62,7 +61,6 @@ func main() {
 
 	n1, _ := strconv.Atoi(os.Args[1])
 	n2, _ := strconv.Atoi(os.Args[2])
-
 	if n1 > n2 {
 		fmt.Printf("%d should be smaller than %d.\n", n1, n2)
 		return
