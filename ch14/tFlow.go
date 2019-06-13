@@ -9,8 +9,8 @@ import (
 
 func Add(sum_arg1, sum_arg2 int8) (interface{}, error) {
 	sum_scope := op.NewScope()
-	input1 := op.Placeholder(sum_scope.SubScope("Summand1"), tf.Int8)
-	input2 := op.Placeholder(sum_scope.SubScope("Summand2"), tf.Int8)
+	input1 := op.Placeholder(sum_scope.SubScope("a1"), tf.Int8)
+	input2 := op.Placeholder(sum_scope.SubScope("a2"), tf.Int8)
 	sum_result_node := op.Add(sum_scope, input1, input2)
 
 	graph, err := sum_scope.Finalize()
@@ -20,13 +20,13 @@ func Add(sum_arg1, sum_arg2 int8) (interface{}, error) {
 		return 0, err
 	}
 
-	summand1, err := tf.NewTensor(sum_arg1)
+	a1, err := tf.NewTensor(sum_arg1)
 	if nil != err {
 		fmt.Println(err.Error())
 		return 0, err
 	}
 
-	summand2, err := tf.NewTensor(sum_arg2)
+	a2, err := tf.NewTensor(sum_arg2)
 	if nil != err {
 		fmt.Println(err.Error())
 		return 0, err
@@ -42,8 +42,8 @@ func Add(sum_arg1, sum_arg2 int8) (interface{}, error) {
 
 	sum, err := session.Run(
 		map[tf.Output]*tf.Tensor{
-			input1: summand1,
-			input2: summand2,
+			input1: a1,
+			input2: a2,
 		},
 		[]tf.Output{sum_result_node}, nil)
 
@@ -57,8 +57,8 @@ func Add(sum_arg1, sum_arg2 int8) (interface{}, error) {
 
 func Multiply(sum_arg1, sum_arg2 int8) (interface{}, error) {
 	sum_scope := op.NewScope()
-	input1 := op.Placeholder(sum_scope.SubScope("Summand1"), tf.Int8)
-	input2 := op.Placeholder(sum_scope.SubScope("Summand2"), tf.Int8)
+	input1 := op.Placeholder(sum_scope.SubScope("x1"), tf.Int8)
+	input2 := op.Placeholder(sum_scope.SubScope("x2"), tf.Int8)
 
 	sum_result_node := op.Mul(sum_scope, input1, input2)
 	graph, err := sum_scope.Finalize()
@@ -68,13 +68,13 @@ func Multiply(sum_arg1, sum_arg2 int8) (interface{}, error) {
 		return 0, err
 	}
 
-	summand1, err := tf.NewTensor(sum_arg1)
+	x1, err := tf.NewTensor(sum_arg1)
 	if nil != err {
 		fmt.Println(err.Error())
 		return 0, err
 	}
 
-	summand2, err := tf.NewTensor(sum_arg2)
+	x2, err := tf.NewTensor(sum_arg2)
 	if nil != err {
 		fmt.Println(err.Error())
 		return 0, err
@@ -90,8 +90,8 @@ func Multiply(sum_arg1, sum_arg2 int8) (interface{}, error) {
 
 	sum, err := session.Run(
 		map[tf.Output]*tf.Tensor{
-			input1: summand1,
-			input2: summand2,
+			input1: x1,
+			input2: x2,
 		},
 		[]tf.Output{sum_result_node}, nil)
 
