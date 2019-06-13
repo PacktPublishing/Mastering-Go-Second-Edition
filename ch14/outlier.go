@@ -29,6 +29,24 @@ func meanValue(x []float64) float64 {
 	return sum / float64(len(x))
 }
 
+func outliers(x []float64, limit float64) []float64 {
+	deviation := math.Sqrt(variance(x))
+	mean := meanValue(x)
+	anomaly := deviation * limit
+	lower := mean - anomaly
+	upper := mean + anomaly
+	fmt.Println(lower, upper)
+
+	y := make([]float64, 0)
+	for _, val := range x {
+		if val < lower || val > upper {
+			y = append(y, val)
+		}
+	}
+
+	return y
+}
+
 func main() {
 	flag.Parse()
 	if len(flag.Args()) != 2 {
@@ -45,7 +63,7 @@ func main() {
 	defer f.Close()
 
 	limit, err := strconv.ParseFloat(flag.Args()[1], 64)
-	if err == nil {
+	if err != nil {
 		fmt.Println(err)
 		return
 	}
@@ -68,7 +86,6 @@ func main() {
 	}
 
 	sort.Float64s(data)
-
-	fmt.Println("Standard Deviation:", math.Sqrt(variance(data)))
-
+	out := outliers(data, limit)
+	fmt.Println(out)
 }
