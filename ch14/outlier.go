@@ -31,8 +31,8 @@ func meanValue(x []float64) float64 {
 
 func main() {
 	flag.Parse()
-	if len(flag.Args()) == 0 {
-		fmt.Printf("usage: stats filename\n")
+	if len(flag.Args()) != 2 {
+		fmt.Printf("usage: stats filename limit\n")
 		return
 	}
 
@@ -43,6 +43,12 @@ func main() {
 		return
 	}
 	defer f.Close()
+
+	limit, err := strconv.ParseFloat(flag.Args()[1], 64)
+	if err == nil {
+		fmt.Println(err)
+		return
+	}
 
 	data := make([]float64, 0)
 	r := bufio.NewReader(f)
