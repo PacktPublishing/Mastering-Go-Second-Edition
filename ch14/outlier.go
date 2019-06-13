@@ -33,13 +33,13 @@ func outliers(x []float64, limit float64) []float64 {
 	deviation := math.Sqrt(variance(x))
 	mean := meanValue(x)
 	anomaly := deviation * limit
-	lower := mean - anomaly
-	upper := mean + anomaly
-	fmt.Println(lower, upper)
+	lower_limit := mean - anomaly
+	upper_limit := mean + anomaly
+	fmt.Println(lower_limit, upper_limit)
 
 	y := make([]float64, 0)
 	for _, val := range x {
-		if val < lower || val > upper {
+		if val < lower_limit || val > upper_limit {
 			y = append(y, val)
 		}
 	}
