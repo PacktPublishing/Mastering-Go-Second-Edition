@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"strconv"
 
 	tf "github.com/tensorflow/tensorflow/tensorflow/go"
 	"github.com/tensorflow/tensorflow/tensorflow/go/op"
@@ -100,14 +102,33 @@ func Multiply(sum_arg1, sum_arg2 int8) (interface{}, error) {
 }
 
 func main() {
-	res, err := Add(-1, 2)
+	if len(os.Args) != 3 {
+		fmt.Println("Need two integer parameters!")
+		return
+	}
+
+	t1, err := strconv.Atoi(os.Args[1])
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	n1 := int8(t1)
+
+	t2, err := strconv.Atoi(os.Args[2])
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	n2 := int8(t2)
+
+	res, err := Add(n1, n2)
 	if err != nil {
 		fmt.Println(err)
 	} else {
 		fmt.Println("Add:", res)
 	}
 
-	res, err = Multiply(-1, 2)
+	res, err = Multiply(n1, n2)
 	if err != nil {
 		fmt.Println(err)
 	} else {
