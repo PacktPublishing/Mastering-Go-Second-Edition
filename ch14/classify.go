@@ -20,7 +20,8 @@ func main() {
 	dataset := flag.Args()[0]
 	rawData, err := base.ParseCSVToInstances(dataset, false)
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
+		return
 	}
 
 	k, err := strconv.Atoi(flag.Args()[1])
@@ -35,12 +36,14 @@ func main() {
 
 	predictions, err := cls.Predict(testData)
 	if err != nil {
-		panic(err)
+		fmt.Println(err)
+		return
 	}
 
 	confusionMat, err := evaluation.GetConfusionMatrix(testData, predictions)
 	if err != nil {
-		panic(fmt.Sprintf("Unable to get confusion matrix: %s", err.Error()))
+		fmt.Println(err)
+		return
 	}
 
 	fmt.Println(evaluation.GetSummary(confusionMat))
