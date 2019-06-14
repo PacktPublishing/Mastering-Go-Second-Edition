@@ -14,28 +14,26 @@ func Add(sum_arg1, sum_arg2 int8) (interface{}, error) {
 	sum_result_node := op.Add(sum_scope, input1, input2)
 
 	graph, err := sum_scope.Finalize()
-
-	if nil != err {
-		fmt.Println(err.Error())
+	if err != nil {
+		fmt.Println(err)
 		return 0, err
 	}
 
 	a1, err := tf.NewTensor(sum_arg1)
-	if nil != err {
-		fmt.Println(err.Error())
+	if err != nil {
+		fmt.Println(err)
 		return 0, err
 	}
 
 	a2, err := tf.NewTensor(sum_arg2)
-	if nil != err {
-		fmt.Println(err.Error())
+	if err != nil {
+		fmt.Println(err)
 		return 0, err
 	}
 
 	session, err := tf.NewSession(graph, nil)
-
-	if nil != err {
-		fmt.Println(err.Error())
+	if err != nil {
+		fmt.Println(err)
 		return 0, err
 	}
 	defer session.Close()
@@ -47,8 +45,8 @@ func Add(sum_arg1, sum_arg2 int8) (interface{}, error) {
 		},
 		[]tf.Output{sum_result_node}, nil)
 
-	if nil != err {
-		fmt.Println(err.Error())
+	if err != nil {
+		fmt.Println(err)
 		return 0, err
 	}
 
@@ -62,28 +60,26 @@ func Multiply(sum_arg1, sum_arg2 int8) (interface{}, error) {
 
 	sum_result_node := op.Mul(sum_scope, input1, input2)
 	graph, err := sum_scope.Finalize()
-
-	if nil != err {
-		fmt.Println(err.Error())
+	if err != nil {
+		fmt.Println(err)
 		return 0, err
 	}
 
 	x1, err := tf.NewTensor(sum_arg1)
-	if nil != err {
-		fmt.Println(err.Error())
+	if err != nil {
+		fmt.Println(err)
 		return 0, err
 	}
 
 	x2, err := tf.NewTensor(sum_arg2)
-	if nil != err {
-		fmt.Println(err.Error())
+	if err != nil {
+		fmt.Println(err)
 		return 0, err
 	}
 
 	session, err := tf.NewSession(graph, nil)
-
-	if nil != err {
-		fmt.Println(err.Error())
+	if err != nil {
+		fmt.Println(err)
 		return 0, err
 	}
 	defer session.Close()
@@ -95,8 +91,8 @@ func Multiply(sum_arg1, sum_arg2 int8) (interface{}, error) {
 		},
 		[]tf.Output{sum_result_node}, nil)
 
-	if nil != err {
-		fmt.Println(err.Error())
+	if err != nil {
+		fmt.Println(err)
 		return 0, err
 	}
 
