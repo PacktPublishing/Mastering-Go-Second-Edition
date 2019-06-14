@@ -31,16 +31,16 @@ func main() {
 	}
 
 	cls := knn.NewKnnClassifier("euclidean", "linear", k)
-	trainData, testData := base.InstancesTrainTestSplit(rawData, 0.50)
-	cls.Fit(trainData)
+	train, test := base.InstancesTrainTestSplit(rawData, 0.50)
+	cls.Fit(train)
 
-	predictions, err := cls.Predict(testData)
+	p, err := cls.Predict(test)
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	confusionMat, err := evaluation.GetConfusionMatrix(testData, predictions)
+	confusionMat, err := evaluation.GetConfusionMatrix(test, p)
 	if err != nil {
 		fmt.Println(err)
 		return
