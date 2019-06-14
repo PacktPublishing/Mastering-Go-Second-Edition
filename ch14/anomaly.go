@@ -17,7 +17,7 @@ func random(min, max int) int {
 func main() {
 	flag.Parse()
 	if len(flag.Args()) == 0 {
-		fmt.Printf("usage: anomaly MAX \n")
+		fmt.Printf("usage: anomaly MAX\n")
 		return
 	}
 
@@ -33,7 +33,7 @@ func main() {
 		LowerBound:  anomalyzer.NA,
 		ActiveSize:  1,
 		NSeasons:    4,
-		Methods:     []string{"diff", "fence", "highrank", "lowrank", "magnitude"},
+		Methods:     []string{"diff", "fence", "magnitude", "ks"},
 	}
 
 	data := []float64{}
