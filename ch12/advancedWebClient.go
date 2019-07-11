@@ -26,7 +26,7 @@ func main() {
 	c := &http.Client{
 		Timeout: 15 * time.Second,
 	}
-	request, err := http.NewRequest("GET", URL.String(), nil)
+	request, err := http.NewRequest(http.MethodGet, URL.String(), nil)
 	if err != nil {
 		fmt.Println("Get:", err)
 		return
