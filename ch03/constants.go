@@ -50,5 +50,4 @@ func main() {
 	fmt.Println("2^2:", p2_2)
 	fmt.Println("2^4:", p2_4)
 	fmt.Println("2^6:", p2_6)
-
 }
