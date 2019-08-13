@@ -7,7 +7,6 @@ import (
 )
 
 func main() {
-
 	logs := []string{"127.0.0.1 - - [16/Nov/2017:10:49:46 +0200] 325504",
 		"127.0.0.1 - - [16/Nov/2017:10:16:41 +0200] \"GET /CVEN HTTP/1.1\" 200 12531 \"-\" \"Mozilla/5.0 AppleWebKit/537.36",
 		"127.0.0.1 200 9412 - - [12/Nov/2017:06:26:05 +0200] \"GET \"http://www.mtsoukalos.eu/taxonomy/term/47\" 1507",
