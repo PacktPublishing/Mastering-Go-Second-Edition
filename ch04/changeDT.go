@@ -11,7 +11,6 @@ import (
 )
 
 func main() {
-
 	arguments := os.Args
 	if len(arguments) == 1 {
 		fmt.Println("Please provide one text file to process!")

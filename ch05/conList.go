@@ -20,7 +20,6 @@ func printList(l *list.List) {
 }
 
 func main() {
-
 	values := list.New()
 
 	e1 := values.PushBack("One")
