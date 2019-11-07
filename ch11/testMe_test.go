@@ -38,7 +38,6 @@ func TestF1(t *testing.T) {
 	if f1(10) != 55 {
 		t.Error(`f1(10) != 55`)
 	}
-
 }
 
 func TestF2(t *testing.T) {
