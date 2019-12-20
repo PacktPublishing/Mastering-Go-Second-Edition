@@ -28,6 +28,7 @@ func main() {
 	s1 := createStruct("Mihalis", "Tsoukalos", 123)
 	s2 := retStructure("Mihalis", "Tsoukalos", 123)
 	fmt.Println((*s1).Name)
+	fmt.Println(s1.Name)
 	fmt.Println(s2.Name)
 	fmt.Println(s1)
 	fmt.Println(s2)
