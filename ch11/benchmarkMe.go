@@ -25,7 +25,9 @@ func fibo3(n int) int {
 	fn := make(map[int]int)
 	for i := 0; i <= n; i++ {
 		var f int
-		if i <= 2 {
+		if i == 0 {
+			f = 0
+		} else if i <= 2 {
 			f = 1
 		} else {
 			f = fn[i-1] + fn[i-2]
@@ -36,6 +38,10 @@ func fibo3(n int) int {
 }
 
 func main() {
+	fmt.Println(fibo1(0))
+	fmt.Println(fibo2(0))
+	fmt.Println(fibo3(0))
+
 	fmt.Println(fibo1(40))
 	fmt.Println(fibo2(40))
 	fmt.Println(fibo3(40))
