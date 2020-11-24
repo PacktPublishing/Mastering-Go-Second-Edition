@@ -6,7 +6,6 @@ import (
 
 func getPointer(n *int) {
 	*n = *n * *n
-
 }
 
 func returnPointer(n int) *int {
